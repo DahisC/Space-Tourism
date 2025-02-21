@@ -5,7 +5,7 @@
     dt="bg-[url(@/assets/destination/background-destination-desktop.jpg)]"
   >
     <div class="grow-1 flex flex-col p-6 items-center" tl="p-10" dt="py-12 px-0 w-fit mx-auto">
-      <div tl="self-start" dt="mb-6">
+      <div class="mb-6" tl="self-start">
         <span
           class="text-white/25 font-barlow-condensed font-bold tracking-[0.15em] mr-6 text-16px"
           tl="text-20px"
@@ -13,7 +13,7 @@
         >
           01
         </span>
-        <span class="mobile-text-preset-6 text-white" tl="tablet-text-preset-5" dt="desktop-text-preset-5">
+        <span class="mobile-text-preset-6" tl="tablet-text-preset-5" dt="desktop-text-preset-5">
           PICK YOUR DESTINATION
         </span>
       </div>
