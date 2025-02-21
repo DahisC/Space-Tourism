@@ -3,6 +3,7 @@ import type { Preset } from 'unocss';
 
 export const presetSpaceTourism: Preset = {
   name: 'SpaceTourism',
+
   presets: [
     presetWebFonts({
       provider: 'google',
