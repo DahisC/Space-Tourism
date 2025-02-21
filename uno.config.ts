@@ -37,20 +37,21 @@ export const presetSpaceTourism: Preset = {
     'desktop-text-preset-4': 'font-bellefair text-[32px]',
     'desktop-text-preset-5': 'font-barlow-condensed text-[28px] tracking-[4px]',
     'desktop-text-preset-6': 'font-bellefair text-[28px]',
-    'desktop-text-preset-7': 'font-barlow-condensed [text-14px] tracking-[2px]',
-    'desktop-text-preset-8': 'font-barlow-condensed [text-16px] tracking-[2px]',
+    'desktop-text-preset-7': 'font-barlow-condensed text-[14px] tracking-[2px]',
+    'desktop-text-preset-8': 'font-barlow-condensed text-[16px] tracking-[2px]',
+    'desktop-text-preset-8-bold': 'font-barlow-condensed text-[16px] tracking-[2.7px] font-bold',
     'desktop-text-preset-9': 'font-barlow text-[18px] leading-[180%]',
     'tablet-text-preset-2': 'font-bellefair text-[80px]',
     'tablet-text-preset-3': 'font-bellefair text-[40px]',
     'tablet-text-preset-4': 'font-bellefair text-[24px]',
-    'tablet-text-preset-5': 'font-barlow-condensed text-[20px] tracking-[4px]',
+    'tablet-text-preset-5': 'font-barlow-condensed text-[20px] tracking-[0.15em]', //
     'tablet-text-preset-9': 'font-barlow text-[16px] leading-[180%]',
     'mobile-text-preset-1': 'font-bellefair text-[80px]',
     'mobile-text-preset-2': 'font-bellefair text-[56px]',
     'mobile-text-preset-3': 'font-bellefair text-[24px]',
     'mobile-text-preset-4': 'font-bellefair text-[18px]',
-    'mobile-text-preset-6': 'font-barlow-condensed text-[16px]',
-    'mobile-text-preset-8': 'font-barlow-condensed [text-14px] tracking-[2px]',
+    'mobile-text-preset-6': 'font-barlow-condensed text-[16px] tracking-[0.15em]', //
+    'mobile-text-preset-8': 'font-barlow-condensed [text-14px] tracking-[0.15em]', //
     'mobile-text-preset-9': 'font-barlow text-[15px] leading-[180%]',
   },
 };
