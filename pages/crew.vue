@@ -16,21 +16,40 @@
         <span class="mobile-text-preset-6" tl="tablet-text-preset-5" dt="desktop-text-preset-5">MEET YOUR CREW</span>
       </div>
 
-      <div class="flex flex-col grow-1" dt="flex-row">
-        <div class="w-full pt-10 text-center mb-8 grow-1 flex flex-col items-center" tl="w-512px" dt="w-539px pt-0">
-          <div class="mobile-text-preset-4 text-white/50 mb-2" tl="tablet-text-preset-4">COMMANDER</div>
-          <div class="mobile-text-preset-3 mb-6 uppercase" tl="tablet-text-preset-3">Douglas Hurley</div>
-          <div class="text-blue-300 mobile-text-preset-9 mb-auto" tl="tablet-text-preset-9" dt="mb-0">
-            Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He
-            launched into space for the third time as commander of Crew Dragon Demo-2.
+      <div class="flex flex-col grow-1" dt="flex-row gap-x-8">
+        <div
+          class="w-full pt-10 text-center mb-8 grow-1 flex flex-col items-center"
+          tl="w-512px"
+          dt="w-539px pt-0 mb-0 items-start text-left"
+        >
+          <div class="mb-auto" dt="my-auto">
+            <div
+              class="mobile-text-preset-4 text-white/50 mb-2 uppercase"
+              tl="tablet-text-preset-4"
+              dt="desktop-text-preset-4"
+            >
+              {{ crew.role }}
+            </div>
+            <div class="mobile-text-preset-3 mb-6 uppercase" tl="tablet-text-preset-3" dt="desktop-text-preset-3">
+              {{ crew.name }}
+            </div>
+            <div class="text-blue-300 mobile-text-preset-9" tl="tablet-text-preset-9" dt="mb-0 desktop-text-preset-9">
+              {{ crew.bio }}
+            </div>
           </div>
-          <div class="flex gap-x-4">
-            <div v-for="_crew in crewList" :key="_crew.name" class="w-10px h-10px bg-white rounded-full"></div>
+          <div class="flex gap-x-4" dt="mb-12 gap-x-10">
+            <div
+              v-for="_crew in crewList"
+              :key="_crew.name"
+              class="w-10px h-10px bg-white rounded-full"
+              dt="w-15px h-15px"
+              @click="onSelectCrew(_crew)"
+            ></div>
           </div>
         </div>
 
-        <div class="h-350px" tl="h-463px -mb-10" dt="h-auto mb-0 w-539px">
-          <img class="w-full h-full object-contain" src="/assets/crew/image-douglas-hurley.png" />
+        <div class="h-350px flex items-center justify-center" tl="h-463px " dt="h-auto mb-0 w-539px">
+          <img class="max-h-340px object-contain" tl="max-h-494px h-full" dt="max-h-723px" :src="crewImagePath" />
         </div>
       </div>
     </div>
@@ -42,13 +61,13 @@ import { crew as crewList } from '@/assets/data.json';
 
 type Crew = (typeof crewList)[number];
 
-const crew = ref<Crew>(crewList[0]);
+const crew = ref<Crew>(crewList[1]);
 
 const onSelectCrew = (newCrew: Crew) => {
   crew.value = newCrew;
 };
 
-// const destinationImagePath = computed(() => destination.value.images.webp.replace('.', '/_nuxt'));
+const crewImagePath = computed(() => crew.value.images.webp.replace('.', '/_nuxt'));
 </script>
 
 <style scoped>
