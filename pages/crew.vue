@@ -48,9 +48,14 @@
           </div>
         </div>
 
-        <div class="h-350px flex items-center justify-center" tl="h-463px " dt="h-auto mb-0 w-539px">
-          <img class="max-h-340px object-contain" tl="max-h-494px h-full" dt="max-h-723px" :src="crewImagePath" />
-        </div>
+        <div
+          class="h-350px flex items-center justify-center bg-contain bg-no-repeat bg-center"
+          tl="h-463px"
+          dt="h-auto mb-0 w-539px"
+          :style="{
+            backgroundImage: `url(${crewImagePath})`,
+          }"
+        ></div>
       </div>
     </div>
   </Body>
