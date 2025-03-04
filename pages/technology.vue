@@ -4,60 +4,66 @@
     tl="bg-[url(@/assets/technology/background-technology-tablet.jpg)]"
     dt="bg-[url(@/assets/technology/background-technology-desktop.jpg)]"
   >
-    <div class="grow-1 flex flex-col p-6 items-center" tl="p-10" dt="py-12 px-0 w-fit mx-auto">
-      <div class="mb-6" tl="self-start">
-        <span
-          class="text-white/25 font-barlow-condensed font-bold tracking-[0.15em] mr-6 text-16px"
-          tl="text-20px"
-          dt="text-28px"
-        >
-          01
-        </span>
-        <span class="mobile-text-preset-6" tl="tablet-text-preset-5" dt="desktop-text-preset-5">
-          PICK YOUR DESTINATION
-        </span>
-      </div>
-
-      <div class="grow-1 flex flex-col" dt="flex-row gap-x-8">
-        <div class="grow-1 flex justify-center items-center mb-8" dt="grow-0 w-539px mb-0">
-          <img class="w-150px animate-rotate" tl="w-300px" dt="w-480px" :src="destinationImagePath" />
+    <div class="grow-1 flex flex-col p-6 items-center" tl="p-10" dt="px-0 py-12 items-end">
+      <div dt="flex flex-col grow-1">
+        <div class="mb-6" tl="self-start">
+          <span
+            class="text-white/25 font-barlow-condensed font-bold tracking-[0.15em] mr-6 text-16px"
+            tl="text-20px"
+            dt="text-28px"
+          >
+            03
+          </span>
+          <span class="mobile-text-preset-6" tl="tablet-text-preset-5" dt="desktop-text-preset-5">
+            SPACE LAUNCH 101
+          </span>
         </div>
 
-        <div class="flex flex-col text-center" tl="max-w-514px" dt="max-w-none w-539px justify-center text-left">
-          <div dt="max-w-445px mx-auto">
-            <ul
-              class="flex gap-x-8 text-blue-300 mobile-text-preset-8 mb-6 justify-center uppercase"
-              tl="desktop-text-preset-8"
-              dt="mb-10 justify-start"
-            >
-              <li v-for="destination in destinations" :key="destination.name" @click="onSelectDestination(destination)">
-                {{ destination.name }}
-              </li>
-            </ul>
+        <div class="grow-1 flex flex-col gap-y-8" dt="flex-row-reverse w-auto gap-x-8">
+          <div class="pt-16 h-322px -mx-6" tl="-mx-10 h-420px" dt="h-auto w-608px mx-0 pt-0">
+            <div
+              class="w-full h-full bg-cover bg-no-repeat bg-center"
+              dt="bg-contain"
+              :style="{
+                backgroundImage: `url(${technologyImagePath})`,
+              }"
+            ></div>
+          </div>
 
-            <div class="mobile-text-preset-2 mb-4 uppercase" tl="tablet-text-preset-2" dt="desktop-text-preset-2">
-              {{ destination.name }}
+          <div class="flex flex-col gap-y-10" dt="flex-row w-635px gap-x-16 items-center">
+            <div class="flex gap-x-4 justify-center" dt="flex-col gap-y-8 gap-x-0">
+              <div
+                v-for="(technology, i) in technologyArray"
+                :key="technology.name"
+                class="w-10 h-10 rounded-full border border-white/25 flex items-center justify-center"
+                tl="w-14 h-14"
+                dt="w-20 h-20"
+                @click="currentTechnology = technology"
+              >
+                <span class="mobile-text-preset-4" tl="tablet-text-preset-4" dt="desktop-text-preset-4">
+                  {{ i + 1 }}
+                </span>
+              </div>
             </div>
-            <p
-              class="mobile-text-preset-9 text-blue-300 mb-6"
-              tl="tablet-text-preset-9"
-              dt="desktop-text-preset-9 mb-10"
-            >
-              {{ destination.description }}
-            </p>
 
-            <div class="bg-white/25 h-1px w-full mb-6" dt="mb-10" />
-
-            <div class="flex flex-col gap-y-6" tl="flex-row gap-x-8 justify-around" dt="justify-start">
-              <div dt="w-1/2">
-                <div class="text-blue-300 desktop-text-preset-7 mb-3 uppercase">AVG. DISTANCE</div>
-                <div class="desktop-text-preset-6 uppercase">{{ destination.distance }}</div>
+            <div class="flex flex-col text-center" tl="px-22" dt="px-0 text-left">
+              <div
+                class="mobile-text-preset-4 text-white/50 mb-4 text-"
+                tl="tablet-text-preset-4"
+                dt="desktop-text-preset-4"
+              >
+                THE TERMINOLOGY…
               </div>
-
-              <div dt="w-1/2">
-                <div class="text-blue-300 desktop-text-preset-7 mb-3 uppercase">Est. travel time</div>
-                <div class="desktop-text-preset-6 uppercase">{{ destination.travel }}</div>
+              <div
+                class="mobile-text-preset-3 uppercase mb-4"
+                tl="tablet-text-preset-3"
+                dt="mb-6 desktop-text-preset-3"
+              >
+                {{ currentTechnology.name }}
               </div>
+              <p class="mobile-text-preset-9 text-blue-300" tl="tablet-text-preset-9" dt="desktop-text-preset-9 ">
+                {{ currentTechnology.description }}
+              </p>
             </div>
           </div>
         </div>
@@ -67,17 +73,13 @@
 </template>
 
 <script setup lang="ts">
-import { destinations } from '@/assets/data.json';
+import { technology as technologyArray } from '@/assets/data.json';
 
-type Destination = (typeof destinations)[number];
+type Technology = (typeof technologyArray)[number];
 
-const destination = ref<Destination>(destinations[0]);
+const currentTechnology = ref<Technology>(technologyArray[0]);
 
-const onSelectDestination = (newDestination: Destination) => {
-  destination.value = newDestination;
-};
-
-const destinationImagePath = computed(() => destination.value.images.webp.replace('.', '/_nuxt'));
+const technologyImagePath = computed(() => currentTechnology.value.images.portrait.replace('.', '/_nuxt'));
 </script>
 
 <style scoped>
