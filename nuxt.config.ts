@@ -11,4 +11,12 @@ export default defineNuxtConfig({
 
   modules: ['@unocss/nuxt'],
   unocss: unoConfig,
+
+  app: {
+    head: {
+      title: 'Space Tourism',
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon-32x32.png' }],
+      meta: [{ name: 'description', content: 'So, You want to travel to SPACE' }],
+    },
+  },
 });
