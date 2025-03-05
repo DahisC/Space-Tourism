@@ -91,6 +91,6 @@ const destinationImagePath = computed(() => destination.value.images.webp.replac
 }
 
 .animate-rotate {
-  animation: rotate 300s linear infinite;
+  animation: rotate 720s linear infinite;
 }
 </style>
