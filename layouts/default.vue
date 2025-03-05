@@ -19,29 +19,11 @@
         dt="grow-0 pl-159px"
       >
         <ul class="flex justify-end gap-x-12 items-center h-full">
-          <li>
-            <a class="whitespace-nowrap" href="#">
-              <span class="desktop-text-preset-8-bold mr-3 hidden" dt="inline">00</span>
-              <span>HOME</span>
-            </a>
-          </li>
-          <li>
-            <a class="whitespace-nowrap" href="#">
-              <span class="desktop-text-preset-8-bold mr-3">01</span>
-              <span>DESTINATION</span>
-            </a>
-          </li>
-          <li>
-            <a class="whitespace-nowrap" href="#">
-              <span class="desktop-text-preset-8-bold mr-3">02</span>
-              <span>CREW</span>
-            </a>
-          </li>
-          <li>
-            <a class="whitespace-nowrap" href="#">
-              <span class="desktop-text-preset-8-bold mr-3">03</span>
-              <span>TECHNOLOGY</span>
-            </a>
+          <li v-for="navLink in NAV_LINKS" :key="navLink.to" class="h-full">
+            <NavLink class="h-full flex items-center" :to="{ name: navLink.to }">
+              <span class="desktop-text-preset-8-bold mr-3">{{ navLink.number }}</span>
+              <span>{{ navLink.name }}</span>
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -61,6 +43,15 @@
     </main>
   </div>
 </template>
+
+<script setup lang="ts">
+const NAV_LINKS: { number: string; name: string; to: string }[] = [
+  { number: '00', name: 'HOME', to: 'index' },
+  { number: '01', name: 'DESTINATION', to: 'destination' },
+  { number: '02', name: 'CREW', to: 'crew' },
+  { number: '03', name: 'TECHNOLOGY', to: 'technology' },
+];
+</script>
 
 <style>
 /* fix: 可能是無用的設定 */
