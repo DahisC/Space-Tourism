@@ -31,6 +31,15 @@ export const presetSpaceTourism: Preset = {
     'bg-home-desktop': 'bg-[url("/assets/home/background-home-desktop.jpg")]',
     'bg-home-tablet': 'bg-[url("/assets/home/background-home-tablet.jpg")]',
     'bg-home-mobile': 'bg-[url("/assets/home/background-home-mobile.jpg")]',
+    'bg-destination-desktop': 'bg-[url("/assets/destination/background-destination-desktop.jpg")]',
+    'bg-destination-tablet': 'bg-[url("/assets/destination/background-destination-tablet.jpg")]',
+    'bg-destination-mobile': 'bg-[url("/assets/destination/background-destination-mobile.jpg")]',
+    'bg-crew-desktop': 'bg-[url("/assets/crew/background-crew-desktop.jpg")]',
+    'bg-crew-tablet': 'bg-[url("/assets/crew/background-crew-tablet.jpg")]',
+    'bg-crew-mobile': 'bg-[url("/assets/crew/background-crew-mobile.jpg")]',
+    'bg-technology-desktop': 'bg-[url("/assets/technology/background-technology-desktop.jpg")]',
+    'bg-technology-tablet': 'bg-[url("/assets/technology/background-technology-tablet.jpg")]',
+    'bg-technology-mobile': 'bg-[url("/assets/technology/background-technology-mobile.jpg")]',
 
     // Typography
     'desktop-text-preset-1': 'font-bellefair text-[144px] leading-[normal]',

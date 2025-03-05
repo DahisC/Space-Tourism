@@ -1,9 +1,5 @@
 <template>
-  <Body
-    class="bg-settings bg-[url(@/assets/crew/background-crew-mobile.jpg)]"
-    tl="bg-[url(@/assets/crew/background-crew-tablet.jpg)]"
-    dt="bg-[url(@/assets/crew/background-crew-desktop.jpg)]"
-  >
+  <Body class="bg-settings bg-crew-mobile" tl="bg-crew-tablet" dt="bg-crew-desktop">
     <div class="grow-1 flex flex-col p-6 items-center" tl="p-10" dt="py-12 px-0 w-fit mx-auto">
       <div class="mb-6" tl="self-start">
         <span
@@ -28,23 +24,26 @@
               tl="tablet-text-preset-4"
               dt="desktop-text-preset-4"
             >
-              {{ crew.role }}
+              {{ currentCrew.role }}
             </div>
             <div class="mobile-text-preset-3 mb-6 uppercase" tl="tablet-text-preset-3" dt="desktop-text-preset-3">
-              {{ crew.name }}
+              {{ currentCrew.name }}
             </div>
             <div class="text-blue-300 mobile-text-preset-9" tl="tablet-text-preset-9" dt="mb-0 desktop-text-preset-9">
-              {{ crew.bio }}
+              {{ currentCrew.bio }}
             </div>
           </div>
           <div class="flex gap-x-4" dt="mb-12 gap-x-10">
-            <div
-              v-for="_crew in crewList"
-              :key="_crew.name"
-              class="w-10px h-10px bg-white rounded-full"
+            <button
+              v-for="crewOption in crewOptions"
+              :key="crewOption.name"
+              class="w-10px h-10px bg-white/20 rounded-full hover:bg-white/50 transition-all transition-duration-300"
+              :class="{
+                '!bg-white': currentCrew.name === crewOption.name,
+              }"
               dt="w-15px h-15px"
-              @click="onSelectCrew(_crew)"
-            ></div>
+              @click="currentCrew = crewOption"
+            ></button>
           </div>
         </div>
 
@@ -62,17 +61,13 @@
 </template>
 
 <script setup lang="ts">
-import { crew as crewList } from '@/assets/data.json';
+import { crew as crewOptions } from '@/assets/data.json';
 
-type Crew = (typeof crewList)[number];
+type Crew = (typeof crewOptions)[number];
 
-const crew = ref<Crew>(crewList[1]);
+const currentCrew = ref<Crew>(crewOptions[1]);
 
-const onSelectCrew = (newCrew: Crew) => {
-  crew.value = newCrew;
-};
-
-const crewImagePath = computed(() => crew.value.images.webp.replace('.', '/_nuxt'));
+const crewImagePath = computed(() => currentCrew.value.images.webp.replace('.', '/_nuxt'));
 </script>
 
 <style scoped>

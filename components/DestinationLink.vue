@@ -1,27 +1,23 @@
 <template>
-  <NuxtLink :to class="relative">
+  <li
+    class="relative h-full cursor-pointer transition-color transition-duration-300"
+    hover="text-white"
+    :class="{ '!after:opacity-100 text-white': isSelected }"
+  >
     <slot />
-  </NuxtLink>
+  </li>
 </template>
 
 <script setup lang="ts">
-import type { RouteLocationRaw } from 'vue-router';
-
 interface Props {
-  to: RouteLocationRaw;
+  isSelected: boolean;
 }
 
 defineProps<Props>();
-
-// refactor: 使用 defineNuxtLink 附加樣式
 </script>
 
 <style scoped>
-a {
+li {
   @apply after:content-[''] after:block after:absolute after:bottom-0 after:h-3px after:w-full after:bg-white after:opacity-0 hover:after:opacity-50 after:transition-all after:transition-duration-300;
-}
-
-a.router-link-exact-active::after {
-  opacity: 1;
 }
 </style>

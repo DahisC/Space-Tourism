@@ -1,9 +1,5 @@
 <template>
-  <Body
-    class="bg-settings bg-[url(@/assets/destination/background-destination-mobile.jpg)]"
-    tl="bg-[url(@/assets/destination/background-destination-tablet.jpg)]"
-    dt="bg-[url(@/assets/destination/background-destination-desktop.jpg)]"
-  >
+  <Body class="bg-settings bg-destination-mobile" tl="bg-destination-tablet" dt="bg-destination-desktop">
     <div class="grow-1 flex flex-col p-6 items-center" tl="p-10" dt="py-12 px-0 w-fit mx-auto">
       <div class="mb-6" tl="self-start">
         <span
@@ -26,24 +22,29 @@
         <div class="flex flex-col text-center" tl="max-w-514px" dt="max-w-none w-539px justify-center text-left">
           <div dt="max-w-445px mx-auto">
             <ul
-              class="flex gap-x-8 text-blue-300 mobile-text-preset-8 mb-6 justify-center uppercase"
+              class="flex gap-x-8 text-blue-300 mobile-text-preset-8 mb-6 justify-center uppercase h-8"
               tl="desktop-text-preset-8"
               dt="mb-10 justify-start"
             >
-              <li v-for="destination in destinations" :key="destination.name" @click="onSelectDestination(destination)">
-                {{ destination.name }}
-              </li>
+              <DestinationLink
+                v-for="destinationOption in destinationOptions"
+                :key="destinationOption.name"
+                @click="currentDestination = destinationOption"
+                :is-selected="currentDestination.name === destinationOption.name"
+              >
+                {{ destinationOption.name }}
+              </DestinationLink>
             </ul>
 
             <div class="mobile-text-preset-2 mb-4 uppercase" tl="tablet-text-preset-2" dt="desktop-text-preset-2">
-              {{ destination.name }}
+              {{ currentDestination.name }}
             </div>
             <p
               class="mobile-text-preset-9 text-blue-300 mb-6"
               tl="tablet-text-preset-9"
               dt="desktop-text-preset-9 mb-10"
             >
-              {{ destination.description }}
+              {{ currentDestination.description }}
             </p>
 
             <div class="bg-white/25 h-1px w-full mb-6" dt="mb-10" />
@@ -51,12 +52,12 @@
             <div class="flex flex-col gap-y-6" tl="flex-row gap-x-8 justify-around" dt="justify-start">
               <div dt="w-1/2">
                 <div class="text-blue-300 desktop-text-preset-7 mb-3 uppercase">AVG. DISTANCE</div>
-                <div class="desktop-text-preset-6 uppercase">{{ destination.distance }}</div>
+                <div class="desktop-text-preset-6 uppercase">{{ currentDestination.distance }}</div>
               </div>
 
               <div dt="w-1/2">
                 <div class="text-blue-300 desktop-text-preset-7 mb-3 uppercase">Est. travel time</div>
-                <div class="desktop-text-preset-6 uppercase">{{ destination.travel }}</div>
+                <div class="desktop-text-preset-6 uppercase">{{ currentDestination.travel }}</div>
               </div>
             </div>
           </div>
@@ -67,17 +68,13 @@
 </template>
 
 <script setup lang="ts">
-import { destinations } from '@/assets/data.json';
+import { destinations as destinationOptions } from '@/assets/data.json';
 
-type Destination = (typeof destinations)[number];
+type Destination = (typeof destinationOptions)[number];
 
-const destination = ref<Destination>(destinations[0]);
+const currentDestination = ref<Destination>(destinationOptions[0]);
 
-const onSelectDestination = (newDestination: Destination) => {
-  destination.value = newDestination;
-};
-
-const destinationImagePath = computed(() => destination.value.images.webp.replace('.', '/_nuxt'));
+const destinationImagePath = computed(() => currentDestination.value.images.webp.replace('.', '/_nuxt'));
 </script>
 
 <style scoped>

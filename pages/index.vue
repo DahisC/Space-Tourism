@@ -7,7 +7,7 @@
             <div class="mobile-text-preset-4 text-blue-300 mb-6" tl="desktop-text-preset-5">
               SO, YOU WANT TO TRAVEL TO
             </div>
-            <div class="mobile-text-preset-1" tl="desktop-text-preset-1">SPACE</div>
+            <div class="animate-fade-in mobile-text-preset-1 opacity-0" tl="desktop-text-preset-1">SPACE</div>
           </h1>
           <p class="text-blue-300 mobile-text-preset-9" tl="tablet-text-preset-9" dt="desktop-text-preset-9 text-left">
             Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind
@@ -16,13 +16,15 @@
         </div>
 
         <div class="grow-1 flex items-center justify-center" tl="items-end" dt="w-540px justify-end">
-          <button class="relative w-36 h-36 bg-white rounded-full group" tl="w-68 h-68">
-            <div
-              class="hidden animate-ripple absolute aspect-square left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 -z-1 rounded-full w-[calc(100%+176px)] group-hover:block"
-            />
+          <NuxtLink :to="{ name: 'destination' }">
+            <button class="relative w-36 h-36 bg-white rounded-full group" tl="w-68 h-68">
+              <div
+                class="hidden animate-ripple absolute aspect-square left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 -z-1 rounded-full w-[calc(100%+176px)] group-hover:block"
+              />
 
-            <span class="text-blue-900 mobile-text-preset-4" tl="desktop-text-preset-4">EXPLORE</span>
-          </button>
+              <span class="text-blue-900 mobile-text-preset-4" tl="desktop-text-preset-4">EXPLORE</span>
+            </button>
+          </NuxtLink>
         </div>
       </section>
     </div>
@@ -30,11 +32,18 @@
 </template>
 
 <style scoped>
+.animate-fade-in {
+  animation: 3s ease-in-out 0.5s forwards fade-in;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
 .animate-ripple {
-  animation-name: ripple;
-  animation-iteration-count: infinite;
-  animation-duration: 2s;
-  animation-timing-function: ease-in-out;
+  animation: 2s infinite ease-in-out ripple;
 }
 
 /* hint: 可以只寫 from！！　接著透過 UnoCSS breakpoint 定義各個斷點底下的 to 寬度 */

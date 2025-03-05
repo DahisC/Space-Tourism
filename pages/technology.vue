@@ -1,9 +1,5 @@
 <template>
-  <Body
-    class="bg-settings bg-[url(@/assets/technology/background-technology-mobile.jpg)]"
-    tl="bg-[url(@/assets/technology/background-technology-tablet.jpg)]"
-    dt="bg-[url(@/assets/technology/background-technology-desktop.jpg)]"
-  >
+  <Body class="bg-settings bg-technology-mobile" tl="bg-technology-tablet" dt="bg-technology-desktop">
     <div class="grow-1 flex flex-col p-6 items-center" tl="p-10" dt="px-0 py-12 items-end">
       <div dt="flex flex-col grow-1">
         <div class="mb-6" tl="self-start">
@@ -32,18 +28,22 @@
 
           <div class="flex flex-col gap-y-10" dt="flex-row w-635px gap-x-16 items-center">
             <div class="flex gap-x-4 justify-center" dt="flex-col gap-y-8 gap-x-0">
-              <div
-                v-for="(technology, i) in technologyArray"
-                :key="technology.name"
-                class="w-10 h-10 rounded-full border border-white/25 flex items-center justify-center"
+              <button
+                v-for="(technologyOption, i) in technologyOptions"
+                :key="technologyOption.name"
+                class="w-10 h-10 rounded-full border border-white/25 flex items-center justify-center transition-all transition-300"
+                :class="{
+                  'bg-white text-blue-900': currentTechnology.name === technologyOption.name,
+                }"
                 tl="w-14 h-14"
                 dt="w-20 h-20"
-                @click="currentTechnology = technology"
+                hover="border-white"
+                @click="currentTechnology = technologyOption"
               >
                 <span class="mobile-text-preset-4" tl="tablet-text-preset-4" dt="desktop-text-preset-4">
                   {{ i + 1 }}
                 </span>
-              </div>
+              </button>
             </div>
 
             <div class="flex flex-col text-center" tl="px-22" dt="px-0 text-left">
@@ -73,11 +73,11 @@
 </template>
 
 <script setup lang="ts">
-import { technology as technologyArray } from '@/assets/data.json';
+import { technology as technologyOptions } from '@/assets/data.json';
 
-type Technology = (typeof technologyArray)[number];
+type Technology = (typeof technologyOptions)[number];
 
-const currentTechnology = ref<Technology>(technologyArray[0]);
+const currentTechnology = ref<Technology>(technologyOptions[0]);
 
 const technologyImagePath = computed(() => currentTechnology.value.images.portrait.replace('.', '/_nuxt'));
 </script>
