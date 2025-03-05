@@ -1,4 +1,5 @@
-import { defineConfig, presetWind3, presetWebFonts, presetAttributify } from 'unocss';
+import { defineConfig, presetWind3, presetWebFonts, presetAttributify, transformerDirectives } from 'unocss';
+
 import type { Preset } from 'unocss';
 
 export const presetSpaceTourism: Preset = {
@@ -61,4 +62,5 @@ export const presetSpaceTourism: Preset = {
 
 export default defineConfig({
   presets: [presetAttributify(), presetWind3(), presetSpaceTourism],
+  transformers: [transformerDirectives()],
 });

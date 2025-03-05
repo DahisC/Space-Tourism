@@ -16,7 +16,11 @@
         </div>
 
         <div class="grow-1 flex items-center justify-center" tl="items-end" dt="w-540px justify-end">
-          <button class="w-36 h-36 bg-white rounded-full" tl="w-68 h-68">
+          <button class="relative w-36 h-36 bg-white rounded-full group" tl="w-68 h-68">
+            <div
+              class="hidden animate-ripple absolute aspect-square left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 -z-1 rounded-full w-[calc(100%+176px)] group-hover:block"
+            />
+
             <span class="text-blue-900 mobile-text-preset-4" tl="desktop-text-preset-4">EXPLORE</span>
           </button>
         </div>
@@ -24,3 +28,19 @@
     </div>
   </Body>
 </template>
+
+<style scoped>
+.animate-ripple {
+  animation-name: ripple;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+/* hint: 可以只寫 from！！　接著透過 UnoCSS breakpoint 定義各個斷點底下的 to 寬度 */
+@keyframes ripple {
+  from {
+    width: 100%;
+  }
+}
+</style>
