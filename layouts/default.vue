@@ -10,7 +10,7 @@
       </div>
 
       <!-- fix: 此處的 -mr 數值需要確認 -->
-      <div class="h-1px bg-white/25 w-full -mr-10 z-1 hidden" dt="block"></div>
+      <div class="h-1px bg-white/25 w-full -mr-30px z-1 hidden" dt="block"></div>
 
       <!-- Desktop Nav -->
       <nav
