@@ -2,7 +2,7 @@
   <Body class="bg-settings bg-home-mobile" tl="bg-home-tablet" dt="bg-home-desktop">
     <div class="grow-1 flex flex-col p-6" tl="px-10 py-32" dt="px-0 flex-row gap-x-7.5 items-end justify-center">
       <section class="flex flex-col grow-1" dt="grow-0 flex-row gap-x-7.5 items-center">
-        <div class="text-center" tl="max-w-512px mx-auto" dt="text-left max-w-540px">
+        <div class="text-center mb-10" tl="max-w-512px mx-auto" dt="text-left max-w-540px">
           <h1 class="mb-6">
             <div class="mobile-text-preset-4 text-blue-300 mb-6" tl="desktop-text-preset-5">
               SO, YOU WANT TO TRAVEL TO

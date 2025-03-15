@@ -18,7 +18,7 @@
           tl="w-512px"
           dt="w-539px pt-0 mb-0 items-start text-left"
         >
-          <div class="mb-auto" dt="my-auto">
+          <div class="mb-6" dt="my-auto">
             <div
               class="mobile-text-preset-4 text-white/50 mb-2 uppercase"
               tl="tablet-text-preset-4"
