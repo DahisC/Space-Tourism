@@ -1,38 +1,6 @@
 <template>
   <div class="text-white">
-    <header
-      class="flex justify-between items-center h-[var(--mobile-header-height)] p-6 fixed w-full top-0 left-0"
-      tl="h-[var(--tablet-header-height)] p-0"
-      dt="h-[var(--desktop-header-height)] pt-10"
-    >
-      <div class="shrink-0" tl="px-10" dt="px-16">
-        <img class="w-10 h-10" tl="w-12 h-12" src="@/assets/shared/logo.svg" alt="logo" />
-      </div>
-
-      <!-- fix: 此處的 -mr 數值需要確認 -->
-      <div class="h-1px bg-white/25 w-full -mr-30px z-1 hidden" dt="block"></div>
-
-      <!-- Desktop Nav -->
-      <nav
-        class="grow-1 h-full bg-white/5 hidden desktop-text-preset-8 pr-12 backdrop-blur-[80px]"
-        tl="block"
-        dt="grow-0 pl-159px"
-      >
-        <ul class="flex justify-end gap-x-12 items-center h-full">
-          <li v-for="navLink in NAV_LINKS" :key="navLink.to" class="h-full">
-            <NavLink class="h-full flex items-center" :to="{ name: navLink.to }">
-              <span class="desktop-text-preset-8-bold mr-3">{{ navLink.number }}</span>
-              <span>{{ navLink.name }}</span>
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Mobile Nav hamburger -->
-      <button tl="hidden">
-        <img class="w-6" src="@/assets/shared/icon-hamburger.svg" alt="logo" />
-      </button>
-    </header>
+    <Header />
 
     <main
       class="min-h-[calc(100vh-var(--mobile-header-height))] flex flex-col mt-[var(--mobile-header-height)]"
@@ -52,16 +20,3 @@ const NAV_LINKS: { number: string; name: string; to: string }[] = [
   { number: '03', name: 'TECHNOLOGY', to: 'technology' },
 ];
 </script>
-
-<style>
-/* fix: 可能是無用的設定 */
-div#__nuxt {
-  height: inherit;
-}
-
-:root {
-  --mobile-header-height: 88px;
-  --tablet-header-height: 96px;
-  --desktop-header-height: 136px;
-}
-</style>

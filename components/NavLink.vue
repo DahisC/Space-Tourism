@@ -18,7 +18,7 @@ defineProps<Props>();
 
 <style scoped>
 a {
-  @apply after:content-[''] after:block after:absolute after:bottom-0 after:h-3px after:w-full after:bg-white after:opacity-0 hover:after:opacity-50 after:transition-all after:transition-duration-300;
+  @apply after:content-[''] after:block after:absolute after:right-0 after:w-3px tl:after:bottom-0 after:h-full tl:after:h-3px tl:after:w-full after:bg-white after:opacity-0 hover:after:opacity-50 after:transition-all after:transition-duration-300;
 }
 
 a.router-link-exact-active::after {
