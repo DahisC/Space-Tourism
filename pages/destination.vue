@@ -74,7 +74,7 @@ type Destination = (typeof destinationOptions)[number];
 
 const currentDestination = ref<Destination>(destinationOptions[0]);
 
-const destinationImagePath = computed(() => currentDestination.value.images.webp.replace('.', '/_nuxt'));
+const destinationImagePath = computed(() => currentDestination.value.images.webp);
 </script>
 
 <style scoped>

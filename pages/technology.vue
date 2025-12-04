@@ -79,7 +79,7 @@ type Technology = (typeof technologyOptions)[number];
 
 const currentTechnology = ref<Technology>(technologyOptions[0]);
 
-const technologyImagePath = computed(() => currentTechnology.value.images.portrait.replace('.', '/_nuxt'));
+const technologyImagePath = computed(() => currentTechnology.value.images.portrait);
 </script>
 
 <style scoped>

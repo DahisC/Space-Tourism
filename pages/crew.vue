@@ -67,7 +67,7 @@ type Crew = (typeof crewOptions)[number];
 
 const currentCrew = ref<Crew>(crewOptions[1]);
 
-const crewImagePath = computed(() => currentCrew.value.images.webp.replace('.', '/_nuxt'));
+const crewImagePath = computed(() => currentCrew.value.images.webp);
 </script>
 
 <style scoped>
